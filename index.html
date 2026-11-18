@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Q&S - 質問と回答</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="./">Q<span>&amp;</span>S</a>
+    <nav>
+      <button class="nav-button" type="button" data-action="show-questions">質問を見る</button>
+      <button class="nav-button primary" type="button" data-action="open-form">質問する</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>知りたいことを、みんなに聞こう</h1>
+      <p>質問を投稿して、回答を募集できます。</p>
+      <button class="cta-button" type="button" data-action="open-form">質問を投稿する</button>
+    </section>
+
+    <section class="search-section">
+      <form id="searchForm" class="search-form">
+        <input id="searchInput" type="search" placeholder="キーワードで質問を検索" aria-label="質問を検索">
+        <button type="submit">検索</button>
+      </form>
+    </section>
+
+    <section class="questions-section">
+      <div class="section-heading">
+        <h2>みんなの質問</h2>
+        <span id="questionCount"></span>
+      </div>
+      <div id="questionList" class="question-list"></div>
+    </section>
+  </main>
+
+  <dialog id="questionDialog">
+    <form id="questionForm" method="dialog">
+      <div class="dialog-heading">
+        <h2>質問を投稿</h2>
+        <button class="close-button" type="button" data-action="close-form" aria-label="閉じる">×</button>
+      </div>
+      <label>
+        タイトル
+        <input id="questionTitle" name="title" required maxlength="100" placeholder="何を知りたいですか？">
+      </label>
+      <label>
+        詳細
+        <textarea id="questionBody" name="body" required maxlength="1000" rows="5" placeholder="状況や条件を詳しく書いてください"></textarea>
+      </label>
+      <label>
+        カテゴリ
+        <select id="questionCategory" name="category">
+          <option>生活</option>
+          <option>テクノロジー</option>
+          <option>学習</option>
+          <option>仕事</option>
+          <option>趣味</option>
+          <option>その他</option>
+        </select>
+      </label>
+      <button class="submit-button" type="submit">投稿する</button>
+    </form>
+  </dialog>
+
+  <template id="questionTemplate">
+    <article class="question-card">
+      <div class="category"></div>
+      <h3></h3>
+      <p class="question-body"></p>
+      <div class="question-meta">
+        <span class="answer-count"></span>
+        <time></time>
+      </div>
+      <details>
+        <summary>回答を見る・投稿する</summary>
+        <div class="answers"></div>
+        <form class="answer-form">
+          <input name="answer" required maxlength="500" placeholder="回答を入力">
+          <button type="submit">回答</button>
+        </form>
+      </details>
+    </article>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
